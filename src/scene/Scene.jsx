@@ -15,6 +15,8 @@ import BoundaryWall from "../components/BoundaryWall";
 
 import Target from "../components/Target";
 
+import Shooting from "../components/Shooting";
+
 function Scene() {
   return (
     <Canvas camera={{ position: [0, 1.6, 5], fov: 75 }}>
@@ -33,6 +35,8 @@ function Scene() {
 <Building position={[0, 10, 255]} />
 <Building position={[25, 4, 160]} />
       <Player/>
+      <Shooting />
+
 <Tree position={[-10, -2, 170]} />
 <Tree position={[10, 0, 190]} />
 
