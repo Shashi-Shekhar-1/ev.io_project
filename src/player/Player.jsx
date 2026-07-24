@@ -3,6 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import Weapon from "../components/Weapon";
 import useHealth from "../hooks/useHealth";
+import PlayerModel from "./PlayerModel";
 
 function Player() {
   const playerRef = useRef();
@@ -123,10 +124,7 @@ function Player() {
 
   return (
     <>
-      <mesh ref={playerRef} position={[0, 0.5, 0]}>
-        <boxGeometry />
-        <meshStandardMaterial color="blue" />
-      </mesh>
+      <PlayerModel playerRef={playerRef} color="blue" />
 
       <Weapon ref={weaponRef} />
     </>
