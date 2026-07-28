@@ -16,9 +16,10 @@ function RemotePlayer({ player }) {
 
   return (
     <PlayerModel
-      playerRef={playerRef}
-      color="yellow"
-    />
+  playerRef={playerRef}
+  color="yellow"
+  visible={true}
+/>
   );
 }
 

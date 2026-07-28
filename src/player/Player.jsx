@@ -140,7 +140,11 @@ function Player({ player }) {
 
   return (
     <>
-      <PlayerModel playerRef={playerRef} color="blue" />
+      <PlayerModel
+  playerRef={playerRef}
+  color="blue"
+  visible={false}
+/>
 
       <Weapon ref={weaponRef} />
     </>
