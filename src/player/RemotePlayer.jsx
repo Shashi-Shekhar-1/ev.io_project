@@ -5,14 +5,18 @@ function RemotePlayer({ player }) {
   const playerRef = useRef();
 
   useEffect(() => {
-    if (playerRef.current) {
-      playerRef.current.position.set(
-        player.x,
-        player.y,
-        player.z
-      );
+  if (playerRef.current) {
+    playerRef.current.position.set(
+      player.x,
+      player.y,
+      player.z
+    );
+
+    if (player.rotation !== undefined) {
+      playerRef.current.rotation.y = player.rotation;
     }
-  }, [player]);
+  }
+}, [player]);
 
   return (
     <PlayerModel
