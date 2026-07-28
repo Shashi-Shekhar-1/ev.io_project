@@ -8,13 +8,19 @@ function App() {
   const [myId, setMyId] = useState("");
 
   useEffect(() => {
+
+    if (socket.connected) {
+  console.log("Already Connected:", socket.id);
+  setMyId(socket.id);
+}
+
     socket.on("connect", () => {
       console.log("Connected:", socket.id);
       setMyId(socket.id);
     });
 
     socket.on("players-update", (playersData) => {
-      console.log("Players:", playersData);
+      // console.log("Players:", playersData);
       setPlayers(playersData);
     });
 
@@ -23,6 +29,9 @@ function App() {
       socket.off("players-update");
     };
   }, []);
+
+  console.log("myId:", myId);
+console.log("players:", players);
 
   return (
     <>
