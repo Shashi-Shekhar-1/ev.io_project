@@ -135,6 +135,7 @@ function Player({ player }) {
   x: playerRef.current.position.x,
   y: playerRef.current.position.y,
   z: playerRef.current.position.z,
+  rotation: camera.rotation.y,
 });
   });
 
