@@ -1,7 +1,7 @@
 import Player from "./Player";
 
-function LocalPlayer() {
-  return <Player />;
+function LocalPlayer({ player }) {
+  return <Player player={player} />;
 }
 
 export default LocalPlayer;

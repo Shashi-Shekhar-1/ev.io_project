@@ -21,7 +21,7 @@ import LocalPlayer from "../player/LocalPlayer";
 
 import RemotePlayer from "../player/RemotePlayer";
 
-function Scene() {
+function Scene({ players, myId }) {
   return (
     <Canvas camera={{ position: [0, 1.6, 5], fov: 75 }}>
       <color attach="background" args={["#87CEEB"]} />
@@ -40,8 +40,23 @@ function Scene() {
 <Building position={[25, 4, 160]} />
 
 
-      <LocalPlayer />
-      <RemotePlayer position={[8, 0.5, 10]} />
+      {Object.values(players).map((player) => {
+  if (player.id === myId) {
+    return (
+      <LocalPlayer
+        key={player.id}
+        player={player}
+      />
+    );
+  }
+
+  return (
+    <RemotePlayer
+      key={player.id}
+      player={player}
+    />
+  );
+})}
       <Shooting />
 
 <Tree position={[-10, -2, 170]} />

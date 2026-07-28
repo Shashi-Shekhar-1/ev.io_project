@@ -1,12 +1,37 @@
+import { useEffect, useState } from "react";
 import Scene from "./scene/Scene";
 import Crosshair from "./components/Crosshair";
+import socket from "./network/socket";
 
 function App() {
-  return(
-  <>
-  <Scene />
-  <Crosshair />
-</>
+  const [players, setPlayers] = useState({});
+  const [myId, setMyId] = useState("");
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("Connected:", socket.id);
+      setMyId(socket.id);
+    });
+
+    socket.on("players-update", (playersData) => {
+      console.log("Players:", playersData);
+      setPlayers(playersData);
+    });
+
+    return () => {
+      socket.off("connect");
+      socket.off("players-update");
+    };
+  }, []);
+
+  return (
+    <>
+      <Scene
+        players={players}
+        myId={myId}
+      />
+      <Crosshair />
+    </>
   );
 }
 

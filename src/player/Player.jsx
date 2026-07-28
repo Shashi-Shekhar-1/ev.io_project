@@ -4,8 +4,9 @@ import * as THREE from "three";
 import Weapon from "../components/Weapon";
 import useHealth from "../hooks/useHealth";
 import PlayerModel from "./PlayerModel";
+import socket from "../network/socket";
 
-function Player() {
+function Player({ player }) {
   const playerRef = useRef();
   const weaponRef = useRef();
   const { camera } = useThree();
@@ -76,6 +77,15 @@ function Player() {
   }, [camera]);
 
   const speed = 0.1;
+  useEffect(() => {
+  if (playerRef.current && player) {
+    playerRef.current.position.set(
+      player.x,
+      player.y,
+      player.z
+    );
+  }
+}, [player]);
 
 
   
@@ -120,6 +130,12 @@ function Player() {
     camera.position.x = playerRef.current.position.x;
     camera.position.y = playerRef.current.position.y + 1.6;
     camera.position.z = playerRef.current.position.z;
+
+    socket.emit("player-move", {
+  x: playerRef.current.position.x,
+  y: playerRef.current.position.y,
+  z: playerRef.current.position.z,
+});
   });
 
   return (

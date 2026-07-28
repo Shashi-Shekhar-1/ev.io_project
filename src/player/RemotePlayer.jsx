@@ -1,16 +1,25 @@
 import PlayerModel from "./PlayerModel";
 import { useRef, useEffect } from "react";
 
-function RemotePlayer({ position = [5, 0.5, 0] }) {
+function RemotePlayer({ player }) {
   const playerRef = useRef();
 
   useEffect(() => {
     if (playerRef.current) {
-      playerRef.current.position.set(...position);
+      playerRef.current.position.set(
+        player.x,
+        player.y,
+        player.z
+      );
     }
-  }, [position]);
+  }, [player]);
 
-  return <PlayerModel playerRef={playerRef} color="yellow" />;
+  return (
+    <PlayerModel
+      playerRef={playerRef}
+      color="yellow"
+    />
+  );
 }
 
 export default RemotePlayer;
