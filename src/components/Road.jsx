@@ -4,7 +4,7 @@ function Road() {
       {/* Main Road */}
       <mesh
   rotation={[-Math.PI / 2, 0, 0]}
-  position={[0, 0.01, 180]}
+  position={[0, 0.01, 60]}
 >
   <planeGeometry args={[12, 120]} />
   <meshStandardMaterial color="#4A4A4A" />

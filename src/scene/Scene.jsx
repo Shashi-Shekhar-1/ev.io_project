@@ -38,6 +38,12 @@ function Scene({ players, myId }) {
 <Building position={[40, 9, 200]} />
 <Building position={[0, 10, 255]} />
 <Building position={[25, 4, 160]} />
+<Building position={[-50, 9, 140]} />
+<Building position={[-29, 5, 100]} />
+<Building position={[-15, 8, 30]} />
+<Building position={[25, 4, 45]} />
+<Building position={[-30, 7, 35]} />
+<Building position={[-59, 10, 10]} />
 
 
       {Object.values(players).map((player) => {
@@ -62,13 +68,12 @@ function Scene({ players, myId }) {
 
 <Tree position={[-10, -2, 170]} />
 <Tree position={[10, 0, 190]} />
-
 <Tree position={[-15, -1, 200]} />
 <Tree position={[15, 0, 200]} />
-
 <Tree position={[-20, 0, 190]} />
-<Tree position={[10, -2, 1150]} />
-
+<Tree position={[10, -2, 150]} />
+<Tree position={[-20, 0, 10]} />
+<Tree position={[10, -2, 25]} />
 <Tree position={[-10, 0, 180]} />
 <Tree position={[20, 0, 180]} />
 <Tree position={[-50, -2, 170]} />
@@ -78,7 +83,6 @@ function Scene({ players, myId }) {
 <Grass position={[-20, 0, 150]} />
 <Grass position={[10, 0, 140]} />
 <Grass position={[-10, 0, 120]} />
-
 <Grass position={[10, 0, 155]} />
 <Grass position={[-10, 0, 155]} />
 <Grass position={[45, 0.02, 210]} />
@@ -115,12 +119,12 @@ function Scene({ players, myId }) {
   size={[160, 4, 1]}
 />
 
-<Target position={[0, 1, 130]} />
+{/* <Target position={[0, 1, 130]} />
 <Target position={[-40, 1, 145]} />
 <Target position={[4, 1, 200]} />
 <Target position={[-80, 1, 155]} />
 <Target position={[8, 1, 120]} />
-<Target position={[10, 2, 160]} />
+<Target position={[10, 2, 160]} /> */}
 
     </Canvas>
   );
