@@ -10,43 +10,50 @@ function Shooting() {
     const raycaster = new THREE.Raycaster();
 
     const shoot = () => {
-      console.log("CLICK DETECTED");
+
+      // Play Gun Sound
+      const sound = new Audio("/sounds/gun.mp3");
+      sound.volume = 0.4;
+      sound.play().catch(() => {});
+
       socket.emit("player-fire");
 
-      raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+      raycaster.setFromCamera(
+        new THREE.Vector2(0, 0),
+        camera
+      );
 
-      const intersects = raycaster.intersectObjects(scene.children, true);
+      const intersects = raycaster.intersectObjects(
+        scene.children,
+        true
+      );
 
       if (intersects.length > 0) {
         const hit = intersects[0].object;
 
         console.log("Hit:", hit.name);
 
-        
-
         if (hit.name === "player") {
-  console.log("👤 Player Hit!");
 
-  // console.log("Before Emit");
-  console.log("Socket ID:", hit.userData.socketId);
+          console.log("👤 Player Hit!");
 
-  socket.emit("player-hit", {
-  playerId: hit.userData.socketId,
-});
+          socket.emit("player-hit", {
+            playerId: hit.userData.socketId,
+          });
 
-  // console.log("After Emit");
+          return;
+        }
 
-  return;
-}
-if (hit.name === "target") {
-  console.log("🎯 Target Hit!");
+        if (hit.name === "target") {
 
-  if (hit.userData.takeDamage) {
-    hit.userData.takeDamage();
-  }
+          console.log("🎯 Target Hit!");
 
-  return;
-}
+          if (hit.userData.takeDamage) {
+            hit.userData.takeDamage();
+          }
+
+          return;
+        }
       }
     };
 

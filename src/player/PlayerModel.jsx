@@ -31,7 +31,7 @@ function PlayerModel({
           (playerRef.current?.position.y || 0.5) + 1,
           playerRef.current?.position.z || 0,
         ]}
-        fontSize={0.25}
+        fontSize={0.30}
         color="white"
         anchorX="center"
         anchorY="middle"
