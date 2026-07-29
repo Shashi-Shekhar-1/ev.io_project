@@ -30,8 +30,8 @@ function App() {
     };
   }, []);
 
-  console.log("myId:", myId);
-console.log("players:", players);
+//   console.log("myId:", myId);
+// console.log("players:", players);
 
   return (
     <>
