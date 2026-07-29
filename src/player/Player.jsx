@@ -145,15 +145,20 @@ function Player({ player }) {
   playerRef={playerRef}
   color="blue"
   visible={false}
-<<<<<<< HEAD
+
   socketId={player.id}
-=======
->>>>>>> 38efd12c8ba7d418ae6a8e34849d10a39e323694
+  health={player.health}
+
+  
+
 />
 
       <Weapon ref={weaponRef} />
     </>
+
+    
   );
+  
 }
 
 export default Player;

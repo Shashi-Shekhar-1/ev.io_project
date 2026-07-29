@@ -4,6 +4,8 @@ import Crosshair from "./components/Crosshair";
 import socket from "./network/socket";
 
 function App() {
+
+  
   const [players, setPlayers] = useState({});
   const [myId, setMyId] = useState("");
 
@@ -13,6 +15,7 @@ function App() {
   console.log("Already Connected:", socket.id);
   setMyId(socket.id);
 }
+
 
     socket.on("connect", () => {
       console.log("Connected:", socket.id);
@@ -36,9 +39,10 @@ function App() {
   return (
     <>
       <Scene
-        players={players}
-        myId={myId}
-      />
+  players={players}
+  myId={myId}
+  
+/>
       <Crosshair />
     </>
   );

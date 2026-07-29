@@ -33,15 +33,20 @@ useEffect(() => {
   }
 }, [player]);
 
+if (player.health <= 0) {
+  return null;
+}
+
   return (
     <PlayerModel
   playerRef={playerRef}
   color="yellow"
-<<<<<<< HEAD
+
   socketId={player.id}
-=======
+  health={player.health}
+
   visible={true}
->>>>>>> 38efd12c8ba7d418ae6a8e34849d10a39e323694
+ 
 />
   );
 }

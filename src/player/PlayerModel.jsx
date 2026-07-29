@@ -1,29 +1,45 @@
+
+import { Text, Billboard } from "@react-three/drei";
+
 function PlayerModel({
   playerRef,
   color = "blue",
   visible = true,
-<<<<<<< HEAD
   socketId,
-=======
->>>>>>> 38efd12c8ba7d418ae6a8e34849d10a39e323694
+  health,
 }) {
   return (
-    <mesh
-      ref={playerRef}
-      position={[0, 0.5, 0]}
-      visible={visible}
-      name="player"
-<<<<<<< HEAD
-      userData={{
-  type: "player",
-  socketId,
-}}
-=======
->>>>>>> 38efd12c8ba7d418ae6a8e34849d10a39e323694
-    >
-      <boxGeometry />
-      <meshStandardMaterial color={color} />
-    </mesh>
+    <>
+      <mesh
+        ref={playerRef}
+        position={[0, 0.5, 0]}
+        visible={visible}
+        name="player"
+        userData={{
+          type: "player",
+          socketId,
+        }}
+      >
+        <boxGeometry />
+        <meshStandardMaterial color={color} />
+      </mesh>
+
+    
+      <Text
+        position={[
+          playerRef.current?.position.x || 0,
+          (playerRef.current?.position.y || 0.5) + 1,
+          playerRef.current?.position.z || 0,
+        ]}
+        fontSize={0.25}
+        color="white"
+        anchorX="center"
+        anchorY="middle"
+      >
+        {health}
+      </Text>
+      
+    </>
   );
 }
 

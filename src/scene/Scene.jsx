@@ -44,9 +44,10 @@ function Scene({ players, myId }) {
   if (player.id === myId) {
     return (
       <LocalPlayer
-        key={player.id}
-        player={player}
-      />
+  key={myId}
+  player={players[myId]}
+  
+/>
     );
   }
 
