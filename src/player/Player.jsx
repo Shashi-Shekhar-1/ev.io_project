@@ -135,6 +135,7 @@ function Player({ player }) {
   x: playerRef.current.position.x,
   y: playerRef.current.position.y,
   z: playerRef.current.position.z,
+  rotation: camera.rotation.y,
 });
   });
 
@@ -144,7 +145,10 @@ function Player({ player }) {
   playerRef={playerRef}
   color="blue"
   visible={false}
+<<<<<<< HEAD
   socketId={player.id}
+=======
+>>>>>>> 38efd12c8ba7d418ae6a8e34849d10a39e323694
 />
 
       <Weapon ref={weaponRef} />
