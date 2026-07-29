@@ -3,8 +3,13 @@ import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import socket from "../network/socket";
 
+import { useState } from "react";
+
 function Shooting() {
   const { camera, scene } = useThree();
+  const [impact, setImpact] = useState(null);
+
+  
 
   useEffect(() => {
     const raycaster = new THREE.Raycaster();
@@ -29,6 +34,13 @@ function Shooting() {
       );
 
       if (intersects.length > 0) {
+
+        setImpact(intersects[0].point);
+
+  setTimeout(() => {
+    setImpact(null);
+  }, 100);
+
         const hit = intersects[0].object;
 
         console.log("Hit:", hit.name);
@@ -64,7 +76,19 @@ function Shooting() {
     };
   }, [camera, scene]);
 
-  return null;
+  return (
+  <>
+    {impact && (
+      <mesh position={impact}>
+        <sphereGeometry args={[0.08, 12, 12]} />
+        <meshBasicMaterial
+          color="red"
+          toneMapped={false}
+        />
+      </mesh>
+    )}
+  </>
+);
 }
 
 export default Shooting;
