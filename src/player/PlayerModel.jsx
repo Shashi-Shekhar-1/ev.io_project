@@ -1,52 +1,3 @@
-
-// import { Text, Billboard } from "@react-three/drei";
-
-// function PlayerModel({
-//   playerRef,
-//   color = "blue",
-//   visible = true,
-//   socketId,
-//   health,
-// }) {
-//   return (
-//     <>
-//       <mesh
-//         ref={playerRef}
-//         position={[0, 0.5, 0]}
-//         visible={visible}
-//         name="player"
-//         userData={{
-//           type: "player",
-//           socketId,
-//         }}
-//       >
-//         <boxGeometry />
-//         <meshStandardMaterial color={color} />
-//       </mesh>
-
-    
-//       <Text
-//         position={[
-//           playerRef.current?.position.x || 0,
-//           (playerRef.current?.position.y || 0.5) + 1,
-//           playerRef.current?.position.z || 0,
-//         ]}
-//         fontSize={0.30}
-//         color="white"
-//         anchorX="center"
-//         anchorY="middle"
-//       >
-//         {health}
-//       </Text>
-      
-//     </>
-//   );
-// }
-
-// export default PlayerModel;
-
-
-
 import { Text, Billboard } from "@react-three/drei";
 
 function PlayerModel({
@@ -60,6 +11,7 @@ function PlayerModel({
 
   return (
     <>
+      {/* PLAYER CHARACTER / HITBOX */}
       <mesh
         ref={playerRef}
         position={[0, 0.5, 0]}
@@ -70,9 +22,97 @@ function PlayerModel({
           socketId,
         }}
       >
-        <boxGeometry />
-        <meshStandardMaterial color={color} />
+        {/* Invisible hitbox material */}
+        <boxGeometry args={[0.8, 1.8, 0.5]} />
+        <meshStandardMaterial
+          color={color}
+          transparent
+          opacity={visible ? 0 : 0}
+        />
+
+        
+        {/* Body */}
+        <mesh
+          name="player"
+          position={[0, 0, 0]}
+          userData={{
+            type: "player",
+            socketId,
+          }}
+        >
+          <boxGeometry args={[0.55, 0.8, 0.35]} />
+          <meshStandardMaterial color={color} />
+        </mesh>
+
+        {/* Head */}
+        <mesh
+          name="player"
+          position={[0, 0.65, 0]}
+          userData={{
+            type: "player",
+            socketId,
+          }}
+        >
+          <sphereGeometry args={[0.25, 16, 16]} />
+          <meshStandardMaterial color="#d6a57a" />
+        </mesh>
+
+        {/* Left Arm */}
+        <mesh
+          name="player"
+          position={[-0.38, 0, 0]}
+          userData={{
+            type: "player",
+            socketId,
+          }}
+        >
+          <boxGeometry args={[0.15, 0.65, 0.15]} />
+          <meshStandardMaterial color={color} />
+        </mesh>
+
+        {/* Right Arm */}
+        <mesh
+          name="player"
+          position={[0.38, 0, 0]}
+          userData={{
+            type: "player",
+            socketId,
+          }}
+        >
+          <boxGeometry args={[0.15, 0.65, 0.15]} />
+          <meshStandardMaterial color={color} />
+        </mesh>
+
+        {/* Left Leg */}
+        <mesh
+          name="player"
+          position={[-0.15, -0.65, 0]}
+          userData={{
+            type: "player",
+            socketId,
+          }}
+        >
+          <boxGeometry args={[0.28, .7, 0.2]} />
+          <meshStandardMaterial color="#222" />
+        </mesh>
+
+        {/* Right Leg */}
+        <mesh
+          name="player"
+          position={[0.15, -0.65, 0]}
+          userData={{
+            type: "player",
+            socketId,
+          }}
+        >
+          <boxGeometry args={[0.18, 0.7, 0.2]} />
+          <meshStandardMaterial color="#222" />
+        </mesh>
       </mesh>
+
+      {/* =====================
+          YOUR EXISTING HEALTH BAR
+      ====================== */}
 
       <Billboard
         position={[
